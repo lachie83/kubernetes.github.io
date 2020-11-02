@@ -123,7 +123,7 @@ To provision a dual-stack LoadBalancer for your Service:
    * Set `.spec.ipFamilyPolicy` field to `PreferDualStack` or `RequireDualStack`
 
 {{< note >}}
-IPv6-enabled external load balancers must be supported by your cloud provider.
+To use a dual-stack `LoadBalancer` type Service, your cloud provider must support IPv4 and IPv6 load balancers.
 {{< /note >}}
 
 ## Egress Traffic
