@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: my-service
 spec:
-  ipFamily: IPv6
+  ipFamilyPolicy: PreferDualStack
   selector:
     app: MyApp
   ports:
