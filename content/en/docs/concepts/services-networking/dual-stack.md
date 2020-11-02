@@ -78,7 +78,7 @@ If you want to explicitly specify which IP address is the primary IP address (wh
    * `SingleStack`: Allocates the Service cluster IP from the first configured service cluster IP range
    * `PreferDualStack`: 
       * Only used if the cluster has dual-stack enabled. Allocates IPv4 and IPv6 cluster IPs for the Service
-      * If the cluster does not have dual-stack enabled, this setting will follow the same behavior as `SingleStack`
+      * If the cluster does not have dual-stack enabled, this setting follows the same behavior as `SingleStack`.
    * `RequireDualStack`: Allocates Service `.spec.ClusterIPs` from both IPv4 and IPv6 address ranges 
       * Selects the `.spec.ClusterIP` from the list of `.spec.ClusterIPs` based on the address family of the first element in the `.spec.ipFamilies` array
 
@@ -128,5 +128,4 @@ Either publicly routable or non-publicly routable IPv6 address blocks will work 
 
 
 * [Validate IPv4/IPv6 dual-stack](/docs/tasks/network/validate-dual-stack) networking
-
 
