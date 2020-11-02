@@ -108,7 +108,7 @@ This Service specification explicitly defines `IPv6` and `IPv4` in `.spec.ipFami
 
 ### Headless Services without selector
 
-For [Headless Services without selectors](/docs/concepts/services-networking/service/#without-selectors) and without `.spec.ipFamilyPolicy` explicitly set, the `.spec.ipFamilyPolicy` field will default to `RequireDualStack`.
+For [Headless Services without selectors](/docs/concepts/services-networking/service/#without-selectors) and without `.spec.ipFamilyPolicy` explicitly set, the `.spec.ipFamilyPolicy` field defaults to `RequireDualStack`.
 
 ### Service Type LoadBalancer
 
@@ -128,4 +128,3 @@ Either publicly routable or non-publicly routable IPv6 address blocks will work 
 
 
 * [Validate IPv4/IPv6 dual-stack](/docs/tasks/network/validate-dual-stack) networking
-
