@@ -84,7 +84,10 @@ If you want to explicitly specify which IP address is the primary IP address (wh
 
 If you would like to define which IP family to use for single stack or define the order of IP families for dual-stack, you can choose the address families by setting an optional field, `.spec.ipFamilies`, on the Service. 
 
-   * The `.spec.ipFamilies` field is immutable because the `.spec.ClusterIP` cannot be reallocated on a Service that already exists. If you want to change `.spec.ipFamilies`, delete and recreate the Service.
+{{< note >}}
+The `.spec.ipFamilies` field is immutable because the `.spec.ClusterIP` cannot be reallocated on a Service that already exists. If you want to change `.spec.ipFamilies`, delete and recreate the Service.
+{{< /note >}}
+
    * The `.spec.ipFamilies` field is an array that accepts element values of `IPv4` and `IPv6`
    * The `.spec.ipFamilies` array field accepts one or more of the following element values:
       * `IPv4`: The API server will assign an IP from a `service-cluster-ip-range` that is `ipv4`
