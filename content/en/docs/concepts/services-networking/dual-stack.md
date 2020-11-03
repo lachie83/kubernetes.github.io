@@ -105,7 +105,12 @@ This Service specification does not explicitly define `.spec.ipFamilyPolicy`. Wh
 
 {{< codenew file="service/networking/dual-stack-default-svc.yaml" >}}
 
-   * This Service specification explicitly defines `PreferDualStack` in `.spec.ipFamilyPolicy`. Kubernetes will assign both IPv4 and IPv6 addresses (as this cluster has dual-stack enabled) and select the `.spec.ClusterIP` from the list of `.spec.ClusterIPs` based on the address family of the first element in the `.spec.ipFamilies` array. Specifying `RequireDualStack` in `.spec.ipFamilyPolicy` on a cluster with dual-stack enabled behaves the same way.
+This Service specification explicitly defines `PreferDualStack` in `.spec.ipFamilyPolicy`.
+When you create this Service on a dual-stack cluster, Kubernetes assigns both IPv4 and IPv6 addresses for the service. The control plane updates the `.spec` for the Service to record the IP address assignments. The field `.spec.ClusterIPs` is the primary record, and contains both assigned IP addresses; `.spec.ClusterIP` is a secondary field with its value calculated from `.spec.ClusterIPs`.  
+For the `.spec.ClusterIP` field, the control plane records the IP address that is the same address family as the cluster's main IP address family. 
+
+On a single-stack cluster, the `.spec.ClusterIPs` and `.spec.ClusterIP` fields both only list one address.
+On a cluster with dual-stack enabled, specifying `RequireDualStack` in `.spec.ipFamilyPolicy` behaves the same as `PreferDualStack`.
 
 {{< codenew file="service/networking/dual-stack-preferred-svc.yaml" >}}
 
