@@ -78,7 +78,7 @@ Services will default to the address family of the first service cluster IP rang
 
 If you want to explicitly specify which IP address is the primary IP address (which is the address assigned for the Service as `.spec.ClusterIP`), you can optionally use the `.spec.ipFamilyPolicy` field. This field accepts one of the following values:
 
-   * `SingleStack`: Allocates the Service cluster IP from the first configured service cluster IP range
+   * `SingleStack`: Single-stack service. The control plane allocates a cluster IP for the Service, using the first configured service cluster IP range.
    * `PreferDualStack`: 
       * Only used if the cluster has dual-stack enabled. Allocates IPv4 and IPv6 cluster IPs for the Service
       * If the cluster does not have dual-stack enabled, this setting follows the same behavior as `SingleStack`.
