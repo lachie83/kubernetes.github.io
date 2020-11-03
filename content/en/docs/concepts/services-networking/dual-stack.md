@@ -128,7 +128,7 @@ To use a dual-stack `LoadBalancer` type Service, your cloud provider must suppor
 
 ## Egress Traffic
 
-Either publicly routable or non-publicly routable IPv6 address blocks will work if the underlying {{< glossary_tooltip text="CNI" term_id="cni" >}} provider implements the transport. If you have a Pod that uses non-publicly routable IPv6 addresses and want that Pod to reach off-cluster destinations (eg. the public Internet), you must set up IP masquerading for the egress traffic. The [ip-masq-agent](https://github.com/kubernetes-sigs/ip-masq-agent) project supports dual-stack for IP masquerading on dual-stack clusters.
+Either publicly routable or non-publicly routable IPv6 address blocks will work if the underlying {{< glossary_tooltip text="CNI" term_id="cni" >}} provider implements the transport. If you have a Pod that uses non-publicly routable IPv6 addresses and want that Pod to reach off-cluster destinations (eg. the public Internet), you must set up IP masquerading for the egress traffic, or a similar mechanism such as transparent proxying. The [ip-masq-agent](https://github.com/kubernetes-sigs/ip-masq-agent) project supports dual-stack for IP masquerading on dual-stack clusters.
 
 ## {{% heading "whatsnext" %}}
 
