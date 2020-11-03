@@ -141,10 +141,16 @@ Create the following Service that explicitly defines `PreferDualStack` in `.spec
 
 {{< codenew file="service/networking/dual-stack-preferred-svc.yaml" >}}
 
-Validate that the Service gets a cluster IPs from the IPv4 and IPv6 address blocks using `kubectl describe`. You may then validate access to the service via the IPs and ports.
+Validate that the Service gets cluster IPs from the IPv4 and IPv6 address blocks using `kubectl describe`. You may then validate access to the service via the IPs and ports.
 
 {{< note >}}
 The `kubectl get svc` command will only show the primary IP in the `CLUSTER-IP` field.
+
+```shell
+$  kubectl get svc -l app=MyApp
+NAME         TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)   AGE
+my-service   ClusterIP   10.0.216.242   <none>        80/TCP    5s
+```
 {{< /note >}}
 
 ```shell
