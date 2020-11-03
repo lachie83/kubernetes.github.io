@@ -103,7 +103,7 @@ The first family you list is used for the legacy `.spec.ClusterIP` field.
 
 ### Example dual-stack Service configurations
 
-Let's look at several examples to demonstrate the behavior of various dual-stack Service configurations.
+These examples demonstrate the behavior of various dual-stack Service configurations.
 
 This Service specification does not explicitly define `.spec.ipFamilyPolicy`. When you create this Service, Kubernetes assigns a cluster IP for the Service from the first configured `service-cluster-ip-range` and set the `.spec.ipFamilyPolicy` to `SingleStack`. [Services without selectors](/docs/concepts/services-networking/service/#services-without-selectors) and [headless Services](/docs/concepts/services-networking/service/#headless-services) with selectors will behave in this same way.
 
