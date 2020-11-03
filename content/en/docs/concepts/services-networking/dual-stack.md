@@ -76,7 +76,8 @@ If your cluster has dual-stack enabled, you can create {{< glossary_tooltip text
 
 Services will default to the address family of the first service cluster IP range configured  via the `--service-cluster-ip-range` flag to the kube-controller-manager.
 
-If you want to explicitly specify which IP address is the primary IP address (which is the address assigned for the Service as `.spec.ClusterIP`), you can optionally use the `.spec.ipFamilyPolicy` field. This field accepts one of the following values:
+When you define a Service you can optionally configure it as dual stack. To specify the behavior you want, you
+set the `.spec.ipFamilyPolicy` field to one of the following values:
 
    * `SingleStack`: Single-stack service. The control plane allocates a cluster IP for the Service, using the first configured service cluster IP range.
    * `PreferDualStack`: 
