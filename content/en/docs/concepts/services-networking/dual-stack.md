@@ -84,7 +84,7 @@ set the `.spec.ipFamilyPolicy` field to one of the following values:
       * Only used if the cluster has dual-stack enabled. Allocates IPv4 and IPv6 cluster IPs for the Service
       * If the cluster does not have dual-stack enabled, this setting follows the same behavior as `SingleStack`.
    * `RequireDualStack`: Allocates Service `.spec.ClusterIPs` from both IPv4 and IPv6 address ranges 
-      * Selects the `.spec.ClusterIP` from the list of `.spec.ClusterIPs` based on the address family of the first element in the `.spec.ipFamilies` array
+      * Selects the `.spec.ClusterIP` from the list of `.spec.ClusterIPs` based on the address family of the first element in the `.spec.ipFamilies` array. The cluster must have dual-stack networking configured.
 
 If you would like to define which IP family to use for single stack or define the order of IP families for dual-stack, you can choose the address families by setting an optional field, `.spec.ipFamilies`, on the Service. 
 
