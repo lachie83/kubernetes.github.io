@@ -92,10 +92,14 @@ If you would like to define which IP family to use for single stack or define th
 The `.spec.ipFamilies` field is immutable because the `.spec.ClusterIP` cannot be reallocated on a Service that already exists. If you want to change `.spec.ipFamilies`, delete and recreate the Service.
 {{< /note >}}
 
-   * The `.spec.ipFamilies` field is an array that accepts element values of `IPv4` and `IPv6`
-   * The `.spec.ipFamilies` array field accepts one or more of the following element values:
-      * `IPv4`: The API server will assign an IP from a `service-cluster-ip-range` that is `ipv4`
-      * `IPv6`: The API server will assign an IP from a `service-cluster-ip-range` that is `ipv6`
+You can set `.spec.ipFamilies` to any of the following array values:
+
+- `["IPv4"]`
+- `["IPv6"]`
+- `["IPv4","IPv6"]` (dual stack)
+- `["IPv6","IPv4"]` (dual stack)
+
+The first family you list is used for the legacy `.spec.ClusterIP` field.
 
 ### Example dual-stack Service configurations
 
