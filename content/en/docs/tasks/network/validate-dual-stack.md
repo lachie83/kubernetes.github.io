@@ -137,6 +137,43 @@ status:
   loadBalancer: {}
 ```
 
+Create the following Service that explicitly defines `IPv6` as the first array element in `.spec.ipFamilies`. Kubernetes will assign a cluster IP for the Service from the IPv6 range configured `service-cluster-ip-range` and set the `.spec.ipFamilyPolicy` to `SingleStack`.
+
+{{< codenew file="service/networking/dual-stack-ipfamilies-ipv6.yaml" >}}
+
+By viewing the YAML for the Service, observe that the Service has the `.spec.ipFamilyPolicy` field has set to `SingleStack` and the `.spec.clusterIP` set to an IPv6 address from the IPv6 range set via `--service-cluster-ip-range` flag on kube-controller-manager.
+
+```shell
+kubectl get svc my-service -o yaml
+```
+
+```yaml
+kubectl get svc my-service -o yaml
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: MyApp
+  name: my-service
+spec:
+  clusterIP: fd00::5118
+  clusterIPs:
+  - fd00::5118
+  ipFamilies:
+  - IPv6
+  ipFamilyPolicy: SingleStack
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 80
+  selector:
+    app: MyApp
+  sessionAffinity: None
+  type: ClusterIP
+status:
+  loadBalancer: {}
+```
+
 Create the following Service that explicitly defines `PreferDualStack` in `.spec.ipFamilyPolicy`. Kubernetes will assign both IPv4 and IPv6 addresses (as this cluster has dual-stack enabled) and select the `.spec.ClusterIP` from the list of `.spec.ClusterIPs` based on the address family of the first element in the `.spec.ipFamilies` array.
 
 {{< codenew file="service/networking/dual-stack-preferred-svc.yaml" >}}
